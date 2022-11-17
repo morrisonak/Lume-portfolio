@@ -21,9 +21,9 @@ jobs:
         run: |
           deno run -A https://deno.land/x/lume/ci.ts
 
-      - name: Deploy
-        uses: crazy-max/ghaction-github-pages@v2.0.1
+      - name: Deploy to Deno Deploy
+        uses: denoland/deployctl@v1
         with:
-          build_dir: _site
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }} 
+          project: project-name
+          import-map: "./import_map.json"
+          entrypoint: serve.ts
